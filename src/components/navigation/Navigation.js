@@ -21,6 +21,7 @@ export const Navigation = () => (
       />
       <ConnectedRoute 
       exact 
+      isProtected
       path="/users"
       component ={Users}
       />

@@ -57,9 +57,10 @@ class API {
     }
   }
 
-  async displayUsers() {
+  async getUsers() {
     try {
       const result = await this.axiosInstance.get("/users");
+
       return result;
     } catch (err) {
       helpMeInstructor(err);
