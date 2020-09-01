@@ -56,6 +56,28 @@ class API {
       throw err;
     }
   }
+
+  async createUser({username, displayName, password}) {
+    // if (confirmPassword !== password){
+    //   console.log("they do not match")
+    // }
+    try {
+      // console.log(username, displayName, password)
+     const result = await this.axiosInstance.post("/users", {
+       username,
+       displayName,
+       password
+     })
+     console.log({result})
+     return `${result.user.username} created`
+      
+    } catch (error) {
+      console.log({error})
+      return error.response.data.message
+      // throw error
+    }
+
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
