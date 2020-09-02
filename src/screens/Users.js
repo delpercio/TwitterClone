@@ -24,7 +24,6 @@ export const Users = () => {
       <input></input>
       <button>Search User</button>
       <br/>
-
       {usernames.map((profile) => (
         <>
           <div>
