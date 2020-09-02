@@ -4,30 +4,32 @@ import { MenuContainer } from "../components"
 
 export const Users = () => {
   const photoUrl = "https://kwitter-api.herokuapp.com";
-
   const [usernames, setUsers] = useState([]);
   const [message, setMessage] = useState("")
+  const [userSearchResult, setUserSearchResult]=useState([])
   useEffect(() => {
     usersList();
+    
   }, []);
 
+  // Render the users list to the page, there should be 500
   const usersList = async () => {
     const users = await api.getUsers();
-    console.log(users.users);
     const usersArr = users.users;
     setUsers(usersArr);
+    
   };
 
+  //User Search logic
   const usersSearch = async ()=>{
     const search = await api.searchUsers(message);
-    console.log(search)
-    console.log(message)
-    setMessage('')
+    const searchResult = search.user
+    setUserSearchResult(searchResult)
   }
   const handleChange = event =>{
     setMessage(event.target.value)
   }
-
+  
   return (
     <div>
       <MenuContainer />
@@ -39,22 +41,35 @@ export const Users = () => {
         onChange={handleChange}
       />
       <button onClick={usersSearch}>Search Users</button>
+
+      {/* displaying the search results */}
+
+      <div>
       <br/>
+      <img src={photoUrl+userSearchResult.pictureLocation}  height="300px" width="300px" alt=""/>
+      <br/>
+      <h2>{userSearchResult.username}</h2>
+      <br/>
+      <h2>{userSearchResult.createdAt}</h2>
+      <hr/>
+      </div>
 
 
-
+      {/* Render the users list */}
       {usernames.map((profile) => (
         <>
-          <div key={profile.username}>
+          <div key={profile.username} >
             <img
+              key={profile.pictureLocation}
               src={photoUrl + profile.pictureLocation}
-              height="50px"
-              width="50px"
-              alt=""
-            />{" "}
+              height="300px"
+              width="300px"
+              alt="NoProfilePicture"
+            
+            />
             <br />
-            User: {profile.username} <br />
-            Joined on: {profile.createdAt}
+            <p>User: {profile.username} </p>
+            <p>Joined on: {profile.createdAt}</p>
           </div>
           <hr />
         </>
