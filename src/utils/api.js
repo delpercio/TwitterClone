@@ -78,6 +78,30 @@ class API {
     }
 
   }
+
+  async setPic(username, pictureData) {
+
+    try {
+      const result = await this.axiosInstance.put(`/users/${username}/picture`, pictureData)
+      // console.log({result})
+      return result
+    } catch (error) {
+      // console.log({error})
+      helpMeInstructor(error)
+      return error
+    }
+  
+  }
+
+  async getCurrentPic(username) {
+    try {
+      const result = await this.axiosInstance.get(`/users/${username}/picture`)
+      return result
+    } catch (error) {
+      helpMeInstructor(error)
+    }
+  }
+
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]

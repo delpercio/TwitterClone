@@ -15,6 +15,7 @@ export function Register() {
     const handleCreateUser = async () => {
         // if (password !== confirmPass)
         let message = await API.createUser({ username, displayName, password })
+        console.log(message)
         setMessage(message)
     }
 
