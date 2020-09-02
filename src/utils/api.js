@@ -67,6 +67,18 @@ class API {
       throw err;
     }
   }
+
+  async searchUsers({message}) {
+    try {
+      const result = await this.axiosInstance.get("/users",{
+        message
+      });
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
