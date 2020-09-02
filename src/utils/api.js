@@ -68,11 +68,9 @@ class API {
     }
   }
 
-  async searchUsers({message}) {
+  async searchUsers(username) {
     try {
-      const result = await this.axiosInstance.get("/users",{
-        message
-      });
+      const result = await this.axiosInstance.get("/users/"+username);
       return result;
     } catch (err) {
       helpMeInstructor(err);

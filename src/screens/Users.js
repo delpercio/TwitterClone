@@ -6,7 +6,7 @@ export const Users = () => {
   const photoUrl = "https://kwitter-api.herokuapp.com";
 
   const [usernames, setUsers] = useState([]);
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("")
   useEffect(() => {
     usersList();
   }, []);
@@ -17,6 +17,13 @@ export const Users = () => {
     const usersArr = users.users;
     setUsers(usersArr);
   };
+
+  const usersSearch = async ()=>{
+    const search = await api.searchUsers(message);
+    console.log(search)
+    console.log(message)
+    setMessage('')
+  }
   const handleChange = event =>{
     setMessage(event.target.value)
   }
@@ -31,11 +38,14 @@ export const Users = () => {
         value={message}
         onChange={handleChange}
       />
-      <button>Search Users</button>
+      <button onClick={usersSearch}>Search Users</button>
       <br/>
+
+
+
       {usernames.map((profile) => (
         <>
-          <div>
+          <div key={profile.username}>
             <img
               src={photoUrl + profile.pictureLocation}
               height="50px"
