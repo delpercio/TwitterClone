@@ -59,7 +59,7 @@ class API {
 
   async getUsers() {
     try {
-      const result = await this.axiosInstance.get("/users");
+      const result = await this.axiosInstance.get("/users?limit=500&offset=0");
 
       return result;
     } catch (err) {
