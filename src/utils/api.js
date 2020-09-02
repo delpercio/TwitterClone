@@ -56,6 +56,16 @@ class API {
       throw err;
     }
   }
+
+  async getMessages() {
+    try {
+      const result = await this.axiosInstance.get("/messages");
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
