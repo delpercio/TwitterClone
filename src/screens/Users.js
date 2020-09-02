@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
+import { MenuContainer } from "../components"
 
 export const Users = () => {
   const photoUrl = "https://kwitter-api.herokuapp.com";
@@ -18,9 +19,11 @@ export const Users = () => {
 
   return (
     <div>
-      <h1>Users</h1>
+      <MenuContainer />
+      <br/>
       <input></input>
       <button>Search User</button>
+      <br/>
 
       {usernames.map((profile) => (
         <>
