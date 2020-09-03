@@ -1,0 +1,1 @@
+export { Register as RegisterForm } from "./Register"
