@@ -1,11 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
-import {
-  HomeScreen,
-  ProfileScreen,
-  NotFoundScreen,
-  MessageScreen,
-} from "../../screens";
+import { HomeScreen, ProfileScreen, NotFoundScreen } from "../../screens";
 
 import { ConnectedRoute } from "../connected-route/ConnectedRoute";
 
@@ -18,7 +13,7 @@ export const Navigation = () => (
         redirectIfAuthenticated
         component={HomeScreen}
       />
-      <ConnectedRoute exact path="/messages" component={MessageScreen} />
+
       <ConnectedRoute
         exact
         isProtected
