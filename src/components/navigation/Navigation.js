@@ -3,6 +3,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import { HomeScreen, ProfileScreen, NotFoundScreen } from "../../screens";
 
 import { ConnectedRoute } from "../connected-route/ConnectedRoute";
+import { RegisterForm } from "../register-form";
 
 export const Navigation = () => (
   <BrowserRouter>
@@ -20,6 +21,7 @@ export const Navigation = () => (
         path="/profiles/:username"
         component={ProfileScreen}
       />
+      <ConnectedRoute path="/register" component={RegisterForm}/>
       <ConnectedRoute path="*" component={NotFoundScreen} />
     </Switch>
   </BrowserRouter>
