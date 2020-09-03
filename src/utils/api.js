@@ -56,6 +56,17 @@ class API {
       throw err;
     }
   }
+
+  async createMessage(text) {
+    try {
+      let info = await this.axiosInstance.post("/messages", { text: text });
+      return info;
+    } catch (err) {
+      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
