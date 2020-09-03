@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/messages";
 import { Loader } from "../loader";
+import styled from "styled-components";
 import "./MessageFeed.css";
+
+const TitleHeader = styled.h2`
+  display: flex;
+  justify-content: center;
+`;
 
 export const MessageFeed = () => {
   const { loading, messages, error } = useSelector((state) => ({
@@ -25,6 +31,7 @@ export const MessageFeed = () => {
     if (messages) {
       return (
         <>
+          <TitleHeader>Messages</TitleHeader>
           {messagesArray.map((message) => (
             <li key={message.id}>{message[1].text}</li>
           ))}
