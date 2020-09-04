@@ -129,6 +129,7 @@ class API {
       return result
     } catch (error) {
       helpMeInstructor(error)
+      return error
     }
   }
 
