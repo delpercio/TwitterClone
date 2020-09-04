@@ -26,7 +26,14 @@ export const MessageFeed = () => {
       return (
         <>
           {messagesArray.map((message) => (
-            <li key={message.id}>{message[1].text}</li>
+            <>
+              <div className="messages-info">
+                <li key={message.id}>{message[1].text}</li>
+                <span>UserId: {message[1].username}</span>
+                <span>Likes: {messages[1].likes.length}</span>
+                <span>Posted: {messages[1].createdAt.toLocaleString()}</span>
+              </div>
+            </>
           ))}
         </>
       );
@@ -36,7 +43,7 @@ export const MessageFeed = () => {
   };
   return (
     <div className="feed">
-      <ul>{handleMessageArray()}</ul>
+      <div className="messages">{handleMessageArray()}</div>
     </div>
   );
 };

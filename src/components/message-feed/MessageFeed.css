@@ -13,3 +13,16 @@
   margin: 0 auto;
   border: solid 2px green;
 }
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.messages-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
