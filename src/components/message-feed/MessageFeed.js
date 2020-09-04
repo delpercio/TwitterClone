@@ -31,7 +31,7 @@ export const MessageFeed = () => {
                 <li key={message.id}>{message[1].text}</li>
                 <span>UserId: {message[1].username}</span>
                 <span>Likes: {messages[1].likes.length}</span>
-                <span>Posted: {messages[1].createdAt.toLocaleString()}</span>
+                <span>Posted: {messages[1].createdAt.toString()}</span>
               </div>
             </>
           ))}
