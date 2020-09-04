@@ -15,13 +15,15 @@ export function PutPic(props) {
     })
 
     const getPic = async () => {
-       let pic = await API.getCurrentPic(currentUsername)
-       setUsersPic(pic)
+        let pic = await API.getCurrentPic(currentUsername)
+        setUsersPic(pic)
     }
 
 
     return (
-        <div>
+        <div className="putPic">
+            <h2>{currentUsername}'s current picture</h2>
+            <img src={usersPic} alt="user's picture" />
             <form ref={form} value="picture" onSubmit={async (e) => {
                 e.preventDefault()
                 const formData = new FormData(form.current)
@@ -40,8 +42,9 @@ export function PutPic(props) {
                 <p>(gif, jpeg, or png files only)</p>
                 <button onClick={getPic} type="submit" > Submit </button>
             </form>
-            <h2>{resultMessage}</h2>
-            <img src={usersPic} alt="user's picture" />
+            <div id="currentPic">
+                <h2>{resultMessage}</h2>
+            </div>
         </div>
     )
 }

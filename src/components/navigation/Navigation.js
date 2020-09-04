@@ -23,6 +23,12 @@ export const Navigation = () => (
         path="/profiles/:username"
         component={ProfileScreen}
       />
+      <ConnectedRoute 
+      exact 
+      isProtected
+      path="/users"
+      component ={Users}
+      />
       <ConnectedRoute path="/register" component={RegisterForm}/>
       <ConnectedRoute path="/messagefeed" component={MessageFeedContainer}/>
       <ConnectedRoute path="*" component={NotFoundScreen} />
