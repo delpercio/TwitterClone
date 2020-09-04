@@ -39,6 +39,7 @@ export const MessageFeed = () => {
                 <span>UserId: {message[1].username}</span>
                 <span>Likes: {messages[1].likes.length}</span>
                 <span>Posted: {messages[1].createdAt.toString()}</span>
+                <button>Like/Unlike(In development Stage)</button>
               </div>
             </>
           ))}
