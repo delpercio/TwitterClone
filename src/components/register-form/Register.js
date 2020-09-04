@@ -31,7 +31,7 @@ export function Register() {
                     <br />
                     Your display name: <input onChange={(e) => setDisplayName(e.target.value)} type="text"></input>
                     <br />
-                    Your password: <input onChange={(e) => setPassword(e.target.value)} type="text"></input>
+                    Your password: <input type="password" onChange={(e) => setPassword(e.target.value)} ></input>
                     <br />
                     {/* Confirm Password: <input onChange={(e) => setConfirm(e.target.value)} type="text"></input> */}
                     <button onClick={handleCreateUser}> Start Kweeting! </button>
