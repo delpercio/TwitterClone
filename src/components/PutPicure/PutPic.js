@@ -22,7 +22,8 @@ export function PutPic(props) {
 
     return (
         <div className="putPic">
-            <h2>Upload a picture!</h2>
+            <h2>{currentUsername}'s current picture</h2>
+            <img src={usersPic} alt="user's picture" />
             <form ref={form} value="picture" onSubmit={async (e) => {
                 e.preventDefault()
                 const formData = new FormData(form.current)
@@ -43,9 +44,7 @@ export function PutPic(props) {
             </form>
             <div id="currentPic">
                 <h2>{resultMessage}</h2>
-                <h3>Current Picture</h3>
             </div>
-            <img src={usersPic} alt="user's picture" />
         </div>
     )
 }
