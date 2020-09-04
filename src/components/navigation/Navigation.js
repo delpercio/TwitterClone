@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import { HomeScreen, ProfileScreen, NotFoundScreen, Users } from "../../screens";
 import { ConnectedRoute } from "../connected-route/ConnectedRoute";
+import { RegisterForm } from "../register-form";
 
 
 export const Navigation = () => (
@@ -25,6 +26,7 @@ export const Navigation = () => (
       path="/users"
       component ={Users}
       />
+      <ConnectedRoute path="/register" component={RegisterForm}/>
       <ConnectedRoute path="*" component={NotFoundScreen} />
     </Switch>
   </BrowserRouter>
