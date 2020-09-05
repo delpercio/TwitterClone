@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/messages";
 import { Loader } from "../loader";
 import styled from "styled-components";
+import { MenuContainer } from "../../components"
 import "./MessageFeed.css";
 
 const TitleHeader = styled.h2`
@@ -31,6 +32,7 @@ export const MessageFeed = () => {
     if (messages) {
       return (
         <>
+        <MenuContainer/>
           <TitleHeader>Messages</TitleHeader>
           {messagesArray.map((message) => (
             <>
