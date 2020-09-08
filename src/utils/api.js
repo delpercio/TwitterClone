@@ -66,6 +66,16 @@ class API {
       throw err;
     }
   }
+
+  async deleteMessage(messageId) {
+    try {
+      const result = await this.axiosInstance.delete(`/messages/${messageId}`);
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
