@@ -70,7 +70,7 @@ class API {
 
   async searchUsers(username) {
     try {
-      const result = await this.axiosInstance.get("/users/"+username);
+      const result = await this.axiosInstance.get("/users/" + username);
       return result;
     } catch (err) {
       helpMeInstructor(err);
@@ -87,52 +87,61 @@ class API {
       return err;
     }
   }
-  async createUser({username, displayName, password}) {
+  async createUser({ username, displayName, password }) {
     // if (confirmPassword !== password){
     //   console.log("they do not match")
     // }
     try {
       // console.log(username, displayName, password)
-     const result = await this.axiosInstance.post("/users", {
-       username,
-       displayName,
-       password
-     })
-     console.log({result})
-     return `${result.user.username} created`
-      
+      const result = await this.axiosInstance.post("/users", {
+        username,
+        displayName,
+        password,
+      });
+      console.log({ result });
+      return `${result.user.username} created`;
     } catch (error) {
-      console.log({error})
-      return error.response.data.message
+      console.log({ error });
+      return error.response.data.message;
       // throw error
     }
-
   }
 
   async setPic(username, pictureData) {
-
     try {
-      const result = await this.axiosInstance.put(`/users/${username}/picture`, pictureData)
+      const result = await this.axiosInstance.put(
+        `/users/${username}/picture`,
+        pictureData
+      );
       // console.log({result})
-      return result
+      return result;
     } catch (error) {
       // console.log({error})
-      helpMeInstructor(error)
-      return error
+      helpMeInstructor(error);
+      return error;
     }
-  
   }
 
   async getCurrentPic(username) {
     try {
-      const result = await this.axiosInstance.get(`/users/${username}/picture`)
-      return result
+      const result = await this.axiosInstance.get(`/users/${username}/picture`);
+      return result;
     } catch (error) {
-      helpMeInstructor(error)
-      return error
+      helpMeInstructor(error);
+      return error;
     }
   }
 
+  async likeMessge({ messageId }) {
+    try {
+      let info = await this.axiosInstance.post("/likes", { messageId });
+      return info;
+    } catch (err) {
+      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
