@@ -32,10 +32,6 @@ export const MessageFeed = () => {
     if (messages) {
       return (
         <div>
-          <div className="menu-container">
-            <MenuContainer />
-          </div>
-
           <TitleHeader>Messages</TitleHeader>
           {messagesArray.map((message) => (
             <div className="messages-info">
@@ -55,6 +51,9 @@ export const MessageFeed = () => {
 
   return (
     <div className="feed">
+      <div className="menu-container">
+        <MenuContainer />
+      </div>
       <div className="messages">{handleMessageArray()}</div>
     </div>
   );
