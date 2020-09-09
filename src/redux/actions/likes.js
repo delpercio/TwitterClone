@@ -8,7 +8,7 @@ export const FAILED = "FAILED";
 export const likeMessage = () => async (dispatch, getState) => {
   try {
     dispatch({ type: LIKE_POST });
-    const payload = await api.likeMessge()
+    const payload = await api.likeMessage()
     dispatch({ type: LIKE_POST_SUCCESS, payload });
   } catch (err) {
     dispatch({

@@ -171,7 +171,7 @@ async googleLogin() {
   }
 }
 
-  async likeMessge({ messageId }) {
+  async likeMessage({ messageId }) {
     try {
       let info = await this.axiosInstance.post("/likes", { messageId });
       return info;
