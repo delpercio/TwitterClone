@@ -142,6 +142,16 @@ class API {
       throw err;
     }
   }
+async googleLogin() {
+  try {
+    // const result = this.axiosInstance.get("/auth/google/login")
+    // const result = this.axiosInstance.get("/auth/google/callback")
+    // console.log({result})
+
+  } catch (error) {
+    console.log({error})
+  }
+}
 
 }
 
