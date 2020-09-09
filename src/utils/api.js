@@ -48,6 +48,25 @@ class API {
     }
   }
 
+  async deleteUser (username) {
+    try {
+      console.log(username)
+      const result = await this.axiosInstance.delete(`/users/${username}`)
+      return result;
+      } catch (err) {
+      helpMeInstructor(err);
+  }
+}
+
+  // async getUser (username) {
+  //   try {
+  //     const result = await this.axiosInstance.get("/users/${username}",)
+  //     return result;
+  //   } catch (err) {
+  //     helpMeInstructor(err);
+  // }
+  // }
+  
   async logout() {
     try {
       await this.axiosInstance.get("/auth/logout");
