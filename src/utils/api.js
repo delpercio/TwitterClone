@@ -133,6 +133,17 @@ class API {
     }
   }
 
+async googleLogin() {
+  try {
+    // const result = this.axiosInstance.get("/auth/google/login")
+    // const result = this.axiosInstance.get("/auth/google/callback")
+    // console.log({result})
+
+  } catch (error) {
+    console.log({error})
+  }
+}
+
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
