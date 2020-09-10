@@ -16,6 +16,7 @@ export const MessageFeed = () => {
     loading: state.messages.loading,
     messages: state.messages.messages,
     error: state.messages.error,
+    id: state.messages.id
   }));
 
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ export const MessageFeed = () => {
     console.log(messages);
   }, []);
 
+  const handleClick = (event,messageId)=>{
+    console.log(messageId)
+  }
+
   const messagesArray = messages
     ? Object.entries(messages)
     : [{ text: "loading" }];
@@ -33,13 +38,13 @@ export const MessageFeed = () => {
       return (
         <div>
           <TitleHeader>Messages</TitleHeader>
-          {messagesArray.map((message) => (
+          {messagesArray.map((message, indexNum) => (
             <div className="messages-info">
               <li key={message.id}>{message[1].text}</li>
               <span>UserId: {message[1].username}</span>
               <span>Likes: {messages[1].likes.length}</span>
               <span>Posted: {messages[1].createdAt.toString()}</span>
-              <button>Like/Unlike(In development Stage)</button>
+              <button onClick={(e)=> handleClick(e, messages[indexNum].id)}>Like/Unlike(In development Stage)</button>
             </div>
           ))}
         </div>
@@ -54,6 +59,7 @@ export const MessageFeed = () => {
       <div className="menu-container">
         <MenuContainer />
       </div>
+      {loading && <Loader/>}
       <div className="messages">{handleMessageArray()}</div>
     </div>
   );
