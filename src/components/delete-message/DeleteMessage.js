@@ -1,10 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import api from "../../utils/api";
 
-
-export const DeleteMessage (id) => {
-    const [deleteMessage, setDeleteMessage] = useState(id);
-    return (
-        <div>
-        </div>
-    )
-}
+export const DeleteButton = () => {};
