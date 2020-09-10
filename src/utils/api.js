@@ -48,15 +48,15 @@ class API {
     }
   }
 
-  async deleteUser (username) {
+  async deleteUser(username) {
     try {
-      console.log(username)
-      const result = await this.axiosInstance.delete(`/users/${username}`)
+      console.log(username);
+      const result = await this.axiosInstance.delete(`/users/${username}`);
       return result;
-      } catch (err) {
+    } catch (err) {
       helpMeInstructor(err);
+    }
   }
-}
 
   // async getUser (username) {
   //   try {
@@ -66,7 +66,7 @@ class API {
   //     helpMeInstructor(err);
   // }
   // }
-  
+
   async logout() {
     try {
       await this.axiosInstance.get("/auth/logout");
@@ -160,20 +160,34 @@ class API {
       throw err;
     }
   }
-async googleLogin() {
-  try {
-    // const result = this.axiosInstance.get("/auth/google/login")
-    // const result = this.axiosInstance.get("/auth/google/callback")
-    // console.log({result})
-
-  } catch (error) {
-    console.log({error})
-  }
-}
-
-  async likeMessage({ messageId }) {
+  async googleLogin() {
     try {
-      let info = await this.axiosInstance.post("/likes", { messageId });
+      // const result = this.axiosInstance.get("/auth/google/login")
+      // const result = this.axiosInstance.get("/auth/google/callback")
+      // console.log({result})
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  async likeMessage(messageId) {
+    try {
+      let info = await this.axiosInstance.post("/likes", {
+        messageId:messageId,
+      });
+      return info;
+    } catch (err) {
+      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
+
+  async unLikeMessage({ likeId }) {
+    try {
+      let info = await this.axiosInstance.delete("/likes", {
+        likeId: likeId,
+      });
       return info;
     } catch (err) {
       console.log({ err });

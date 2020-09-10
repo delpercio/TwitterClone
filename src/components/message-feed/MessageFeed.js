@@ -5,6 +5,8 @@ import { Loader } from "../loader";
 import styled from "styled-components";
 import { MenuContainer } from "../../components";
 import "./MessageFeed.css";
+import { likeMessageAction } from "../../redux/actions/likes";
+import { UnlikeMessageAction } from "../../redux/actions/likes";
 
 const TitleHeader = styled.h2`
   display: flex;
@@ -16,19 +18,21 @@ export const MessageFeed = () => {
     loading: state.messages.loading,
     messages: state.messages.messages,
     error: state.messages.error,
-    id: state.messages.id
+    id: state.messages.id,
   }));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(actions.getMessages());
+    handleMessageArray()
     console.log(messages);
   }, []);
 
-  const handleClick = (event,messageId)=>{
-    console.log(messageId)
-  }
+  const handleClick = (event, messageId) => {
+    console.log(messageId);
+    dispatch(likeMessageAction(messageId));
+  };
 
   const messagesArray = messages
     ? Object.entries(messages)
@@ -39,12 +43,14 @@ export const MessageFeed = () => {
         <div>
           <TitleHeader>Messages</TitleHeader>
           {messagesArray.map((message, indexNum) => (
-            <div className="messages-info">
+            <div key={messages[indexNum].id} className="messages-info">
               <li key={message.id}>{message[1].text}</li>
               <span>UserId: {message[1].username}</span>
               <span>Likes: {messages[1].likes.length}</span>
               <span>Posted: {messages[1].createdAt.toString()}</span>
-              <button onClick={(e)=> handleClick(e, messages[indexNum].id)}>Like/Unlike(In development Stage)</button>
+              <button onClick={(e) => handleClick(e, messages[indexNum].id)}>
+                Like/Unlike(In development Stage)
+              </button>
             </div>
           ))}
         </div>
@@ -59,7 +65,7 @@ export const MessageFeed = () => {
       <div className="menu-container">
         <MenuContainer />
       </div>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       <div className="messages">{handleMessageArray()}</div>
     </div>
   );
