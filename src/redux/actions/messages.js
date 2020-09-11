@@ -20,7 +20,7 @@ const getMessages = () => async (dispatch, getState) => {
   }
 };
 
-const deleteMessage = () => async (dispatch, getState) => {
+const deleteMessage = (id) => async (dispatch, getState) => {
   try {
     const payload = await api.deleteMessage(id);
     dispatch({ type: DELETE_MESSAGE_SUCCESS, payload });
