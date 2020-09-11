@@ -165,6 +165,9 @@ async googleLogin() {
     // const result = this.axiosInstance.get("/auth/google/login")
     // const result = this.axiosInstance.get("/auth/google/callback")
     // console.log({result})
+    const result = this.axiosInstance.get("/auth/google/login")
+    return result
+    console.log("successful")
 
   } catch (error) {
     console.log({error})
