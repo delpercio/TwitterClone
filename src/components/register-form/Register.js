@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MenuContainer } from '../menu'
 import API from "../../utils/api"
+import { Form, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "./Register.css"
 
 
 
@@ -26,20 +29,42 @@ export function Register() {
         <>
             <MenuContainer />
             <div className="registerForm">
-                <form onSubmit={(e) => e.preventDefault()}>
-                    Your username: <input onChange={(e) => setUsername(e.target.value)} type="text"></input>
-                    <br />
-                    Your display name: <input onChange={(e) => setDisplayName(e.target.value)} type="text"></input>
-                    <br />
-                    Your password: <input type="password" onChange={(e) => setPassword(e.target.value)} ></input>
-                    <br />
+                <Form onSubmit={(e) => e.preventDefault()} >
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.File.Label size="lg">
+                            Your username:
+                    </Form.File.Label>
+                        <Form.Control size="lg" placeholder="Username" onChange={(e) => setUsername(e.target.value)} type="text"></Form.Control>
+
+                    </Form.Group>
+                    {/* <br /> */}
+                    <Form.Group>
+
+                        <Form.File.Label size="lg">
+                            Your display name:
+                        </Form.File.Label>
+                        <Form.Control size="lg" placeholder="Display name" onChange={(e) => setDisplayName(e.target.value)} type="text"></Form.Control>
+
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.File.Label size="lg">
+                            Your password:
+                    </Form.File.Label>
+                        <Form.Control size="lg" placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)} ></Form.Control>
+                    </Form.Group>
+
                     {/* Confirm Password: <input onChange={(e) => setConfirm(e.target.value)} type="text"></input> */}
-                    <button onClick={handleCreateUser}> Start Kweeting! </button>
-                    <br />
+                    <div className="buttonAndReturn">
+
+                    <Button type="submit" variant="primary" onClick={handleCreateUser}> Start Kweeting! </Button>
+
                     <Link to="/"> Back To Login form </Link>
-                    <br />
-                    <h1>{userMessage}</h1>
-                </form>
+
+                    </div>
+
+                    <h2>{userMessage}</h2>
+                </Form>
             </div>
         </>
     )
