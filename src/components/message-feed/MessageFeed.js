@@ -26,12 +26,11 @@ export const MessageFeed = () => {
 
   useEffect(() => {
     dispatch(actions.getMessages());
-   
+    console.log(messages);
   }, []);
 
-  const handleLikeClick =(event, messageId) => {
-    
-     dispatch(likeMessageAction(messageId));
+  const handleLikeClick = (event, messageId) => {
+    dispatch(likeMessageAction(messageId));
   };
 
   const handleUnlikeClick = (event, likesArr) => {
@@ -39,28 +38,26 @@ export const MessageFeed = () => {
     console.log(currentUsername);
     for (let i = 0; i < likesArr.length; i++) {
       if (likesArr[i].username === currentUsername) {
-       
         dispatch(unlikeMessageAction(likesArr[i].id));
-        
       }
     }
   };
 
-  const messagesArray = messages
-    ? Object.entries(messages)
-    : [{ text: "loading" }];
-
-  const handleMessageArray = () => {
-    if (messages) {
-      return (
-        <div>
+  return (
+    <div className="feed">
+      <div className="menu-container">
+        <MenuContainer />
+      </div>
+      {loading && <Loader />}
+      <div className="messages">{ messages && <div>
           <TitleHeader>Messages</TitleHeader>
-          {messagesArray.map((message, indexNum) => (
+          {/* {console.log(messagesArray)} */}
+          {messages.map((message, indexNum) => (
             <div key={messages[indexNum].id} className="messages-info">
-              <span key={message.id}>{message[1].text}</span>
-              <span>UserId: {message[1].username}</span>
-              <span>Likes: {messages[1].likes.length}</span>
-              <span>Posted: {messages[1].createdAt.toString()}</span>
+              <span key={message.id}>{message.text}</span>
+              <span>UserId: {message.username}</span>
+              <span>Likes: {message.likes.length}</span>
+              <span>Posted: {message.createdAt.toString()}</span>
               <button
                 onClick={(e) => handleLikeClick(e, messages[indexNum].id)}
               >
@@ -73,22 +70,7 @@ export const MessageFeed = () => {
               </button>
             </div>
           ))}
-        </div>
-      );
-    } else {
-      return Loader;
-    }
-  };
-
-  const renderMessages= handleMessageArray();
-
-  return (
-    <div className="feed">
-      <div className="menu-container">
-        <MenuContainer />
-      </div>
-      {loading && <Loader />}
-      <div className="messages">{renderMessages}</div>
+        </div>}</div>
     </div>
   );
 };
