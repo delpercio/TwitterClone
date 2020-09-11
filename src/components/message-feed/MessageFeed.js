@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/messages";
-import { Loader } from "../loader";
+import { LoaderComponent } from "../loader";
 import styled from "styled-components";
 import { MenuContainer } from "../../components";
 import "./MessageFeed.css";
+
 
 const TitleHeader = styled.h2`
   display: flex;
@@ -45,7 +46,7 @@ export const MessageFeed = () => {
         </div>
       );
     } else {
-      return Loader;
+      return <LoaderComponent/>;
     }
   };
 

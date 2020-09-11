@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
-import { MenuContainer } from "../components";
+import { MenuContainer, LoaderComponent } from "../components";
 import UserSearch from "../components/user-search/UserSearch";
 
 export const Users = () => {
@@ -38,10 +38,13 @@ export const Users = () => {
             <br />
             <p>User: {profile.username} </p>
             <p>Joined on: {profile.createdAt}</p>
+            
           </div>
           <hr />
         </>
       ))}
+      {usernames.length === 0 && <LoaderComponent/>}
+
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/auth";
-import { Loader } from "../loader";
+import { LoaderComponent } from "../loader";
 import "./LoginForm.css";
 
 export const LoginForm = ({ login }) => {
@@ -52,7 +52,7 @@ export const LoginForm = ({ login }) => {
           Login
         </button>
       </form>
-      {loading && <Loader />}
+      {loading && <LoaderComponent />}
       {error && <p style={{ color: "red" }}>{error.message}</p>}
     </React.Fragment>
   );
