@@ -3,6 +3,8 @@ import {
   LOADING,
   LOADING_MESSAGES_SUCCESS,
   LOADING_MESSAGES_FAILED,
+  DELETE_MESSAGE_SUCCESS,
+  DELETE_MESSAGE_FAILED,
 } from "../actions";
 
 // Initial State
@@ -31,6 +33,19 @@ export const messagesReducer = (state = { ...INITIAL_STATE }, action) => {
         ...INITIAL_STATE,
         error: action.payload,
         loading: false,
+      };
+    case DELETE_MESSAGE_SUCCESS:
+      return {
+        ...INITIAL_STATE,
+        loader: "",
+        loading: false,
+        messages: messages,
+      };
+    case DELETE_MESSAGE_FAILED:
+      return {
+        ...INITIAL_STATE,
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;
