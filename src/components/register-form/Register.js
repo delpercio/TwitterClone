@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { MenuContainer } from '../menu'
+import { actions } from '../../redux/actions/auth'
 import API from "../../utils/api"
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Register.css"
+import { useDispatch } from 'react-redux'
 
 
 
 export function Register() {
+    const history = useHistory()
+    const dispatch = useDispatch()
     const [username, setUsername] = useState("")
     const [displayName, setDisplayName] = useState("")
     const [password, setPassword] = useState("")
@@ -18,8 +22,17 @@ export function Register() {
     const handleCreateUser = async () => {
         // if (password !== confirmPass)
         let message = await API.createUser({ username, displayName, password })
-        console.log(message)
-        setMessage(message)
+        console.log({message})
+        // await API.login({ username, password })
+        if (message === 200) {
+            setMessage("User created. Logging in")
+            dispatch(actions.login({username, password}))
+            history.push("/")
+
+        }else {
+            setMessage(message)
+            
+        }
     }
 
 
@@ -57,9 +70,9 @@ export function Register() {
                     {/* Confirm Password: <input onChange={(e) => setConfirm(e.target.value)} type="text"></input> */}
                     <div className="buttonAndReturn">
 
-                    <Button type="submit" variant="primary" onClick={handleCreateUser}> Start Kweeting! </Button>
+                        <Button type="submit" variant="primary" onClick={handleCreateUser}> Start Kweeting! </Button>
 
-                    <Link to="/"> Back To Login form </Link>
+                        <Link to="/"> Back To Login form </Link>
 
                     </div>
 

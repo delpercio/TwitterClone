@@ -48,18 +48,18 @@ class API {
     }
   }
 
-  async deleteUser (username) {
+  async deleteUser(username) {
     try {
       console.log(username)
       const result = await this.axiosInstance.delete(`/users/${username}`)
       return result;
-      } catch (err) {
+    } catch (err) {
       helpMeInstructor(err);
+    }
   }
-}
 
 
-  
+
   async logout() {
     try {
       await this.axiosInstance.get("/auth/logout");
@@ -111,7 +111,8 @@ class API {
         password,
       });
       console.log({ result });
-      return `${result.user.username} created`;
+      // await this.login({ username, password })
+      return result.statusCode;
     } catch (error) {
       console.log({ error });
       return error.response.data.message;
@@ -153,19 +154,6 @@ class API {
       throw err;
     }
   }
-async googleLogin() {
-  try {
-    // const result = this.axiosInstance.get("/auth/google/login")
-    // const result = this.axiosInstance.get("/auth/google/callback")
-    // console.log({result})
-    const result = this.axiosInstance.get("/auth/google/login")
-    return result
-    console.log("successful")
-
-  } catch (error) {
-    console.log({error})
-  }
-}
 
   async likeMessge({ messageId }) {
     try {
