@@ -16,7 +16,6 @@ const login = (credentials) => async (dispatch, getState) => {
     dispatch({ type: LOGIN });
     const payload = await api.login(credentials);
     // ℹ️ℹ️This is how you woud debug the response to a requestℹ️ℹ️
-    // console.log({ result })
     dispatch({ type: LOGIN_SUCCESS, payload });
   } catch (err) {
     dispatch({
@@ -40,11 +39,9 @@ const logout = () => async (dispatch, getState) => {
 };
 const googleLogin = (credentials) => async (dispatch, getState) => {
   try {
-    console.log("dispatched")
     dispatch({ type: LOGIN });
     // const payload = await api.login(credentials);
     // ℹ️ℹ️This is how you woud debug the response to a requestℹ️ℹ️
-    // console.log({ result })
     dispatch({ type: LOGIN_SUCCESS, payload: credentials });
   } catch (err) {
     dispatch({

@@ -10,7 +10,6 @@ export function PutPic(props) {
     useEffect(() => {
         async function currentPic() {
             const result = await API.getCurrentPic(currentUsername)
-            // console.log({result})
             if (result.response === undefined){
                 setUsersPic(`https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`)
             }else {
@@ -29,7 +28,7 @@ export function PutPic(props) {
     return (
         <div className="putPic">
             <h2>{currentUsername}'s current picture</h2>
-            <img width="300px" src={usersPic ? usersPic : defaultPic} alt="user's picture" />
+            <img width="300px" src={usersPic ? usersPic : defaultPic} alt="user's profile" />
             <form ref={form} value="picture" onSubmit={async (e) => {
                 e.preventDefault()
                 const formData = new FormData(form.current)

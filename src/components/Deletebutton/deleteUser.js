@@ -10,18 +10,14 @@ import "./deleteUser.css";
 
 const DeleteUser = (props) => {
    const [deleteMessage, setDeleteMessage] = useState(null)
-    let txt = "";
     const handleDelete = async () => {
     if (window.confirm("Are You Sure You Want To Delete?") === true) {
       
-      console.log(props)
      
       await API.deleteUser(props.auth.username);
       setDeleteMessage("User Has Been Deleted Logging Out!")
       props.logout()
-   } else {
-      txt = "Delete Cancelled";
-    }
+   } 
   };
 
 

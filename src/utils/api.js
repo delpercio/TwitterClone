@@ -50,14 +50,12 @@ class API {
 
   async deleteUser(username) {
     try {
-      console.log(username)
-      const result = await this.axiosInstance.delete(`/users/${username}`)
+      const result = await this.axiosInstance.delete(`/users/${username}`);
       return result;
     } catch (err) {
       helpMeInstructor(err);
     }
   }
-
 
 
   async logout() {
@@ -94,29 +92,20 @@ class API {
       let info = await this.axiosInstance.post("/messages", { text: text });
       return info;
     } catch (err) {
-      console.log({ err });
       helpMeInstructor(err);
       return err;
     }
   }
   async createUser({ username, displayName, password }) {
-    // if (confirmPassword !== password){
-    //   console.log("they do not match")
-    // }
     try {
-      // console.log(username, displayName, password)
       const result = await this.axiosInstance.post("/users", {
         username,
         displayName,
         password,
       });
-      console.log({ result });
-      // await this.login({ username, password })
       return result.statusCode;
     } catch (error) {
-      console.log({ error });
       return error.response.data.message;
-      // throw error
     }
   }
 
@@ -126,10 +115,8 @@ class API {
         `/users/${username}/picture`,
         pictureData
       );
-      // console.log({result})
       return result;
     } catch (error) {
-      // console.log({error})
       helpMeInstructor(error);
       return error;
     }
@@ -155,12 +142,24 @@ class API {
     }
   }
 
-  async likeMessge({ messageId }) {
+  async likeMessage(messageId) {
     try {
-      let info = await this.axiosInstance.post("/likes", { messageId });
+      let info = await this.axiosInstance.post("/likes", {
+        messageId:messageId,
+      });
       return info;
     } catch (err) {
-      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
+
+  async unlikeMessage(likeId) {
+    try {
+      let info = await this.axiosInstance.delete("/likes/"+likeId,
+      );
+      return info;
+    } catch (err) {
       helpMeInstructor(err);
       return err;
     }

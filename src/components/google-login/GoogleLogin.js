@@ -9,7 +9,6 @@ export function GoogleLoginComponent() {
     const responseGoogle = async (event) => {
         const openerWindow = window.open("https://kwitter-api.herokuapp.com/auth/google/login")
         openerWindow.window.opener.onmessage = function (event) {
-            console.log(event)
             if (event.data.statusCode !== 200) {
                 openerWindow.close()
                 return 

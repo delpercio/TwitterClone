@@ -4,7 +4,6 @@ import { MenuContainer } from '../menu'
 import { actions } from '../../redux/actions/auth'
 import API from "../../utils/api"
 import { Form, Button } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Register.css"
 import { useDispatch } from 'react-redux'
 
@@ -22,7 +21,6 @@ export function Register() {
     const handleCreateUser = async () => {
         // if (password !== confirmPass)
         let message = await API.createUser({ username, displayName, password })
-        console.log({message})
         // await API.login({ username, password })
         if (message === 200) {
             setMessage("User created. Logging in")
@@ -39,8 +37,8 @@ export function Register() {
     // TODO take out the br tags and use flexbox to style everything
     // Also if there's enough time, add a way to confirm passwords and not show password by default
     return (
-        <>
-            <MenuContainer />
+        <div className="skyBlue">
+            <MenuContainer className="skyBlue" />
             <div className="registerForm">
                 <Form onSubmit={(e) => e.preventDefault()} >
                     <Form.Group controlId="formBasicEmail">
@@ -79,6 +77,6 @@ export function Register() {
                     <h2>{userMessage}</h2>
                 </Form>
             </div>
-        </>
+        </div>
     )
 }
