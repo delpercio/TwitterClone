@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card"
+import Card from "react-bootstrap/Card";
 import api from "../../utils/api";
+import "./UserSearch.css";
 
 const UserSearch = () => {
   const photoUrl = "https://kwitter-api.herokuapp.com";
@@ -23,30 +24,29 @@ const UserSearch = () => {
   };
 
   return (
-    <div className='main'>
-    
-      <Form style={{textAlign:'center'}}
-        onSubmit={(e) => {
-          e.preventDefault();
-          usersSearch();
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Enter Username"
-          value={message}
-          onChange={handleChange}
-        />
-        
-      </Form>
-      
-         <Button onClick={usersSearch}>Search Users</Button> 
-    
-      
+    <div className="main">
+      <div className="searchbar">
+        <Form
+          style={{ textAlign: "center" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            usersSearch();
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Enter Username"
+            value={message}
+            onChange={handleChange}
+          />
+        </Form>
+        <Button onClick={usersSearch}>Search Users</Button>
+      </div>
 
       {/* displaying the search results */}
-      {shouldRender && userSearchResult? (
-        <Card style={{width:'18rem', display:'inline-flex'}}>   
+      
+      {shouldRender && userSearchResult ? (
+        <Card style={{ width: "18rem", display: "inline-flex" }}>
           <br />
           <Card.Img
             src={
@@ -59,12 +59,10 @@ const UserSearch = () => {
             alt=""
           />
           <Card.Body>
-             <h2>{userSearchResult.username}</h2>
-          
-          <h2>{userSearchResult.createdAt}</h2> 
+            <h2>Username: {userSearchResult.username}</h2>
+
+            <h2>Joined On:{userSearchResult.createdAt}</h2>
           </Card.Body>
-          
-          
         </Card>
       ) : (
         ""

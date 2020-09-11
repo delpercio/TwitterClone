@@ -19,10 +19,10 @@ export const likeMessageAction = (messageId) => async (dispatch, getState) => {
   }
 };
 
-export const UnlikeMessageAction = (likeId) => async (dispatch, getState) => {
+export const unlikeMessageAction = (likeId) => async (dispatch, getState) => {
   try {
     dispatch({ type: UNLIKE_POST });
-    const payload = await api.unLikeMessage(likeId)
+    const payload = await api.unlikeMessage(likeId)
     dispatch({ type: UNLIKE_POST_SUCCESS, payload });
   } catch (err) {
     dispatch({

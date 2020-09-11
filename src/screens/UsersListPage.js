@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import api from "../utils/api";
-import { MenuContainer } from "../components";
+import { MenuContainer, Loader } from "../components";
 import UserSearch from "../components/user-search/UserSearch";
 import './UsersListPage.css'
 
 export const Users = () => {
   const photoUrl = "https://kwitter-api.herokuapp.com";
   const [usernames, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     usersList();
@@ -16,6 +17,7 @@ export const Users = () => {
   // Render the users list to the page, there should be 500
   const usersList = async () => {
     const users = await api.getUsers();
+    setLoading(false)
     const usersArr = users.users;
     setUsers(usersArr);
   };
@@ -24,13 +26,13 @@ export const Users = () => {
     <>
       <MenuContainer />
       <UserSearch />
+      {loading && <Loader/>}
 
       {/* Render the users list */}
       {usernames.map((profile) => (
-        <span>
+        <span key={profile.username}>
           <Card style={{ width: "20%" , display:"inline-flex"}} key={profile.username}>
             <Card.Img
-              key={profile.pictureLocation}
               src={
                 profile.pictureLocation
                   ? photoUrl + profile.pictureLocation
