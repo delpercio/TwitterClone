@@ -38,9 +38,25 @@ const logout = () => async (dispatch, getState) => {
     dispatch({ type: LOGOUT });
   }
 };
+const googleLogin = (credentials) => async (dispatch, getState) => {
+  try {
+    console.log("dispatched")
+    dispatch({ type: LOGIN });
+    // const payload = await api.login(credentials);
+    // ℹ️ℹ️This is how you woud debug the response to a requestℹ️ℹ️
+    // console.log({ result })
+    dispatch({ type: LOGIN_SUCCESS, payload: credentials });
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAILURE,
+      payload: err.message,
+    });
+  }
+};
 // END AUTH ACTIONS
 
 export const actions = {
   login,
   logout,
+  googleLogin
 };

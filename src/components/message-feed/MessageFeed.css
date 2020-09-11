@@ -1,0 +1,33 @@
+.feed {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+.message-header {
+  display: flex;
+  justify-content: center;
+  max-width: 60em;
+  margin: 0 auto;
+  border: solid 2px green;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  border: 2px solid yellow;
+}
+
+.messages-info {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  border: 1px solid black;
+}
+
+.menu-container {
+  border: 2px solid brown;
+}

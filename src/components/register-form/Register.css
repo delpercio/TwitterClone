@@ -1,0 +1,14 @@
+body {
+    background-color: #c7feff;
+}
+.registerForm {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.buttonAndReturn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 30px;
+}

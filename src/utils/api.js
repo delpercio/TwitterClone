@@ -68,6 +68,115 @@ class API {
       throw err;
     }
   }
+
+  async getUsers() {
+    try {
+      const result = await this.axiosInstance.get("/users?limit=500&offset=0");
+
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
+
+  async searchUsers(username) {
+    try {
+      const result = await this.axiosInstance.get("/users/" + username);
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
+  async createMessage(text) {
+    try {
+      let info = await this.axiosInstance.post("/messages", { text: text });
+      return info;
+    } catch (err) {
+      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
+  async createUser({ username, displayName, password }) {
+    // if (confirmPassword !== password){
+    //   console.log("they do not match")
+    // }
+    try {
+      // console.log(username, displayName, password)
+      const result = await this.axiosInstance.post("/users", {
+        username,
+        displayName,
+        password,
+      });
+      console.log({ result });
+      return `${result.user.username} created`;
+    } catch (error) {
+      console.log({ error });
+      return error.response.data.message;
+      // throw error
+    }
+  }
+
+  async setPic(username, pictureData) {
+    try {
+      const result = await this.axiosInstance.put(
+        `/users/${username}/picture`,
+        pictureData
+      );
+      // console.log({result})
+      return result;
+    } catch (error) {
+      // console.log({error})
+      helpMeInstructor(error);
+      return error;
+    }
+  }
+
+  async getCurrentPic(username) {
+    try {
+      const result = await this.axiosInstance.get(`/users/${username}/picture`);
+      return result;
+    } catch (error) {
+      helpMeInstructor(error);
+      return error;
+    }
+  }
+
+  async getMessages() {
+    try {
+      const result = await this.axiosInstance.get("/messages");
+      return result;
+    } catch (err) {
+      helpMeInstructor(err);
+      throw err;
+    }
+  }
+async googleLogin() {
+  try {
+    // const result = this.axiosInstance.get("/auth/google/login")
+    // const result = this.axiosInstance.get("/auth/google/callback")
+    // console.log({result})
+    const result = this.axiosInstance.get("/auth/google/login")
+    return result
+    console.log("successful")
+
+  } catch (error) {
+    console.log({error})
+  }
+}
+
+  async likeMessge({ messageId }) {
+    try {
+      let info = await this.axiosInstance.post("/likes", { messageId });
+      return info;
+    } catch (err) {
+      console.log({ err });
+      helpMeInstructor(err);
+      return err;
+    }
+  }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]
