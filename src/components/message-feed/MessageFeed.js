@@ -26,13 +26,12 @@ export const MessageFeed = () => {
 
   useEffect(() => {
     dispatch(actions.getMessages());
-    handleMessageArray();
-    console.log(messages);
+   
   }, []);
 
-  const handleLikeClick = (event, messageId) => {
-    console.log(messageId);
-    dispatch(likeMessageAction(messageId));
+  const handleLikeClick =(event, messageId) => {
+    
+     dispatch(likeMessageAction(messageId));
   };
 
   const handleUnlikeClick = (event, likesArr) => {
@@ -40,8 +39,9 @@ export const MessageFeed = () => {
     console.log(currentUsername);
     for (let i = 0; i < likesArr.length; i++) {
       if (likesArr[i].username === currentUsername) {
-        console.log(likesArr[i].id);
+       
         dispatch(unlikeMessageAction(likesArr[i].id));
+        
       }
     }
   };
@@ -57,7 +57,7 @@ export const MessageFeed = () => {
           <TitleHeader>Messages</TitleHeader>
           {messagesArray.map((message, indexNum) => (
             <div key={messages[indexNum].id} className="messages-info">
-              <li key={message.id}>{message[1].text}</li>
+              <span key={message.id}>{message[1].text}</span>
               <span>UserId: {message[1].username}</span>
               <span>Likes: {messages[1].likes.length}</span>
               <span>Posted: {messages[1].createdAt.toString()}</span>
@@ -80,13 +80,15 @@ export const MessageFeed = () => {
     }
   };
 
+  const renderMessages= handleMessageArray();
+
   return (
     <div className="feed">
       <div className="menu-container">
         <MenuContainer />
       </div>
       {loading && <Loader />}
-      <div className="messages">{handleMessageArray()}</div>
+      <div className="messages">{renderMessages}</div>
     </div>
   );
 };
