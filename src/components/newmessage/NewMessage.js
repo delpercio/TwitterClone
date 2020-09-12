@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import API from "../../utils/api";
 import { Card, Button, Form } from "react-bootstrap";
-import { findByDisplayValue } from "@testing-library/react";
 
 export function NewMessage() {
   const [message, setMessage] = useState("");
@@ -26,12 +25,12 @@ export function NewMessage() {
     <Card className="newMessage">
       <Card.Title>Make a new Kweet!</Card.Title>
       <Form onSubmit={handleSubmit}>
-        <input
+        <Form.Control
           type="text"
           ref={input}
           onChange={(event) => setMessage(event.target.value)}
-        ></input>
-        <Button>kweet</Button>
+        ></Form.Control>
+        <Button style={{width: "100%"}} type="submit">kweet</Button>
       </Form>
       <h3>{resultMessage}</h3>
     </Card>
