@@ -11,18 +11,17 @@ export function PutPic(props) {
     `https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`
   );
   const form = useRef(null);
+  //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    async function currentPic() {
-      const result = await API.getCurrentPic(currentUsername);
+    const abortController = new AbortController()
+      const result = API.getCurrentPic(currentUsername, {signal: abortController.signal});
       if (result.response === undefined) {
         setUsersPic(
           `https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`
         );
       } else {
         setUsersPic(defaultPic);
-      }
-    }
-    currentPic();
+      }  
   });
   const defaultPic =
     "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/01/17/twitter-egg.jpg";
@@ -71,7 +70,7 @@ export function PutPic(props) {
         </Form>
       </Card.Body>
       <div id="currentPic">
-        <h2>{resultMessage}</h2>
+        <h2 style={{width: "400px"}}>{resultMessage}</h2>
       </div>
     </Card>
   );
