@@ -13,8 +13,7 @@ export function PutPic(props) {
   const form = useRef(null);
   //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const abortController = new AbortController()
-      const result = API.getCurrentPic(currentUsername, {signal: abortController.signal});
+      const result = API.getCurrentPic(currentUsername);
       if (result.response === undefined) {
         setUsersPic(
           `https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`
