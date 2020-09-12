@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import API from "../../utils/api";
+import { Card, Button, Form } from "react-bootstrap";
+import { findByDisplayValue } from "@testing-library/react";
 
 export function NewMessage() {
   const [message, setMessage] = useState("");
@@ -21,17 +23,17 @@ export function NewMessage() {
     setMessage("");
   };
   return (
-    <div className="newMessage">
-      <h2>Make a new Kweet!</h2>
-      <form onSubmit={handleSubmit}>
+    <Card className="newMessage">
+      <Card.Title>Make a new Kweet!</Card.Title>
+      <Form onSubmit={handleSubmit}>
         <input
+          type="text"
           ref={input}
           onChange={(event) => setMessage(event.target.value)}
         ></input>
-        <button>kweet</button>
-      </form>
+        <Button>kweet</Button>
+      </Form>
       <h3>{resultMessage}</h3>
-    </div>
+    </Card>
   );
 }
-

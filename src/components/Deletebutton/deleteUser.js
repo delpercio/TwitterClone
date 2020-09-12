@@ -1,38 +1,32 @@
 import React, { useState } from "react";
 import API from "../../utils/api";
 import { connect } from "react-redux";
-import { actions } from "../../redux/actions/auth"
-import "bootstrap/dist/css/bootstrap.min.css";
+import { actions } from "../../redux/actions/auth";
 import "./deleteUser.css";
-
-
-
+import { Button } from "react-bootstrap";
 
 const DeleteUser = (props) => {
-   const [deleteMessage, setDeleteMessage] = useState(null)
-    const handleDelete = async () => {
+  const [deleteMessage, setDeleteMessage] = useState(null);
+  const handleDelete = async () => {
     if (window.confirm("Are You Sure You Want To Delete?") === true) {
-      
-     
       await API.deleteUser(props.auth.username);
-      setDeleteMessage("User Has Been Deleted Logging Out!")
-      props.logout()
-   } 
+      setDeleteMessage("User Has Been Deleted Logging Out!");
+      props.logout();
+    }
   };
-
 
   return (
     <div>
-      <button onClick={handleDelete}>Delete User</button>
+      <Button onClick={handleDelete}>Delete User</Button>
       <h2>{deleteMessage}</h2>
     </div>
   );
 };
-function mapDispatchToProps(dispatch){
-    return {logout:() => dispatch(actions.logout())}
+function mapDispatchToProps(dispatch) {
+  return { logout: () => dispatch(actions.logout()) };
 }
 function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps , mapDispatchToProps)(DeleteUser);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteUser);

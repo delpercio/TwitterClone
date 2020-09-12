@@ -1,0 +1,8 @@
+.putPic {
+  text-align: center;
+}
+.chooseFile {
+  text-align: center;
+  position: relative;
+  left: 75px;
+}

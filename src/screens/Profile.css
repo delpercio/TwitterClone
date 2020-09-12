@@ -1,0 +1,7 @@
+.profileContainer {
+  background-color: #c7feff;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+}
