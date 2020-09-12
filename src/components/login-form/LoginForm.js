@@ -53,7 +53,11 @@ export const LoginForm = ({ login }) => {
         </button>
       </form>
       {loading && <LoaderComponent />}
-      {error && <p style={{ color: "red" }}>{error.message}</p>}
+      {error && (
+        <p style={{ color: "red" }}>
+          {error !== "" ? "FAILED TO LOGIN" : null}
+        </p>
+      )}
     </React.Fragment>
   );
 };
