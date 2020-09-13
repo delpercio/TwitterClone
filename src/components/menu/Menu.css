@@ -13,21 +13,17 @@
 
 }
 
-#menu-links {
-  display: flex;
-  padding-left: 1em;
-  
-}
+
 #menu-links :hover{
   color: brown;
-  transform: scale(1.1)
+  transform: scale(1.1);
+  text-decoration: none;
 
 }
 
 #menu-links a {
-  padding-right: 0.5em;
+  padding-right: 2em;
   color: darkblue;
-
   text-align: center;
   cursor: pointer;
 }

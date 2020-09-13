@@ -2,15 +2,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  border: 2px solid black;
-}
-
-.message-header {
-  display: flex;
-  justify-content: center;
-  max-width: 60em;
-  margin: 0 auto;
-  border: solid 2px green;
+  background-color: #c7feff;
 }
 
 .messages {
@@ -18,16 +10,11 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  border: 2px solid yellow;
-}
+} 
 
-.messages-info {
-  display: flex;
-  flex-direction: column;
-  width: 700px;
-  border: 1px solid black;
+.likes {
+  margin-bottom: 1px;
 }
-
-.menu-container {
-  border: 2px solid brown;
+h1 {
+  text-align: center;
 }

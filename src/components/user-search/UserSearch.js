@@ -48,7 +48,7 @@ const UserSearch = () => {
       {/* displaying the search results */}
 
       {shouldRender && userSearchResult ? (
-        <Card style={{ width: "18rem", display: "inline-flex" }}>
+        <Card bg="info" style={{ width: "18rem", display: "inline-flex" }}>
           <br />
           <Card.Img
             src={
