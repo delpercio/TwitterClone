@@ -28,9 +28,11 @@ export const Users = () => {
       <UserSearch />
 
       {/* Render the users list */}
-      {usernames.map((profile) => (
+       <div style={{textAlign:"center", backgroundColor:'#c7feff'}}>
+
+         {usernames.map((profile) => (
         <span key={profile.username}>
-          <Card style={{ width: "20%", display: "inline-flex" }} key={profile.username}>
+          <Card style={{ width: "250px", display: "inline-flex" }} key={profile.username}>
             <Card.Img
               src={
                 profile.pictureLocation
@@ -47,7 +49,12 @@ export const Users = () => {
             </Card.Body>
           </Card>
         </span>
+        
       ))}
+       </div>
+
+      
+      
       <div className="centered">
         {loading && <LoaderComponent />}
       </div>
