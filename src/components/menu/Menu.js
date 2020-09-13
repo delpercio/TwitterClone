@@ -11,7 +11,7 @@ export const Menu = () => {
   const dispatch = useDispatch();
   const logout = () => dispatch(actions.logout());
   return (
-    <Nav id="menu">
+    <Navbar id="menu">
       <Navbar.Brand href="/">
         <span className="kwitterLogo">Kwitter</span>
       </Navbar.Brand>
@@ -29,6 +29,6 @@ export const Menu = () => {
           </>
         ) : null}
       </div>
-    </Nav>
+    </Navbar>
   );
 };
