@@ -1,15 +1,18 @@
 import React from "react";
 import { LoginFormContainer, MenuContainer, GoogleLoginComponent } from "../components";
 import { Link } from "react-router-dom";
+import "./Home.css"
 
 
 export const HomeScreen = () => (
-  <>
+  <div className="homeScreen">
     <MenuContainer />
-    <h2>Your favorite microblogging platform</h2>
+    <div className="loginInfo">
+
     <LoginFormContainer />
     <GoogleLoginComponent />
-    <br />
-    <Link to="/register">New user? Register here</Link>
-  </>
+    <br/>
+    <Link style={{fontSize:"30px"}} to="/register">New user? Register here</Link>
+    </div>
+  </div>
 );

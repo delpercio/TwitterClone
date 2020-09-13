@@ -1,6 +1,8 @@
 import React from 'react'
 import { actions } from "../../redux/actions/auth"
 import { useDispatch } from "react-redux"
+import { Button } from "react-bootstrap"
+import "./GoogleLogin.css"
 
 
 export function GoogleLoginComponent() {
@@ -11,8 +13,8 @@ export function GoogleLoginComponent() {
         openerWindow.window.opener.onmessage = function (event) {
             if (event.data.statusCode !== 200) {
                 openerWindow.close()
-                return 
-            }else {
+                return
+            } else {
                 dispatch(actions.googleLogin(event.data))
                 openerWindow.close()
             }
@@ -21,9 +23,9 @@ export function GoogleLoginComponent() {
     return (
         <>
 
-            <button onClick={responseGoogle}>
+            <Button className="loginButtons" onClick={responseGoogle}>
                 Sign in with Google
-        </button>
+        </Button>
         </>
     )
 }

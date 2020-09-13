@@ -1,0 +1,15 @@
+.homeScreen {
+    background-color: #c7feff;
+}
+
+.loginInfo {
+    margin: 0 auto;
+    text-align:center;
+    width: 700px;
+}
+
+.loginButtons {
+    width: 400px;
+    margin: 10px auto;
+    
+}

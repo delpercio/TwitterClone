@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/auth";
 import { LoaderComponent } from "../loader";
+import { Form, Button } from "react-bootstrap"
 import "./LoginForm.css";
 
 export const LoginForm = ({ login }) => {
@@ -30,28 +31,37 @@ export const LoginForm = ({ login }) => {
 
   return (
     <React.Fragment>
-      <form id="login-form" onSubmit={handleLogin}>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          value={state.username}
-          autoFocus
-          required
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={state.password}
-          required
-          onChange={handleChange}
-        />
-        <button type="submit" disabled={loading}>
+      <Form id="login-form" onSubmit={handleLogin}>
+        <Form.Group>
+
+          <Form.Label size="lg" htmlFor="username">Username</Form.Label>
+          <Form.Control size="lg"
+            type="text"
+            name="username"
+            value={state.username}
+            autoFocus
+            required
+            onChange={handleChange}
+            placeholder="Username"
+          />
+        </Form.Group>
+        <Form.Group>
+
+          <Form.Label size="lg" htmlFor="password">Password</Form.Label>
+          <Form.Control size="lg"
+            type="password"
+            name="password"
+            value={state.password}
+            required
+            onChange={handleChange}
+            placeholder="Password"
+          />
+        </Form.Group>
+
+        <Button className="loginButtons" type="submit" disabled={loading}>
           Login
-        </button>
-      </form>
+        </Button>
+      </Form>
       {loading && <LoaderComponent />}
       {error && (
         <p style={{ color: "red" }}>

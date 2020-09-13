@@ -34,8 +34,6 @@ export function Register() {
     }
 
 
-    // TODO take out the br tags and use flexbox to style everything
-    // Also if there's enough time, add a way to confirm passwords and not show password by default
     return (
         <div className="skyBlue">
             <MenuContainer className="skyBlue" />
@@ -48,7 +46,6 @@ export function Register() {
                         <Form.Control size="lg" placeholder="Username" onChange={(e) => setUsername(e.target.value)} type="text"></Form.Control>
 
                     </Form.Group>
-                    {/* <br /> */}
                     <Form.Group>
 
                         <Form.File.Label size="lg">

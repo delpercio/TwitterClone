@@ -1,5 +1,10 @@
 #login-form {
+  background-color: #c7feff;
   display: flex;
   flex-direction: column;
-  max-width: 20em;
+  /* max-width: 20em; */
+  margin: 0 auto;
+  border-radius: 5%;
+  padding: 20px;
+  width: 700px;
 }

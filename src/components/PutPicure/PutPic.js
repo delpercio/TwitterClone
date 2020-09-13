@@ -7,20 +7,26 @@ import { Card, Button, Form } from "react-bootstrap";
 export function PutPic(props) {
   const currentUsername = useSelector((state) => state.auth.username);
   const [resultMessage, setMessage] = useState("");
-  const [usersPic, setUsersPic] = useState(
-    `https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`
-  );
+  const [usersPic, setUsersPic] = useState(`https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`);
   const form = useRef(null);
-  //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-      const result = API.getCurrentPic(currentUsername);
+
+    async function getPictures() {
+      const result = await API.getCurrentPic(currentUsername);
+      // console.log(result)
       if (result.response === undefined) {
         setUsersPic(
           `https://kwitter-api.herokuapp.com/users/${currentUsername}/picture`
         );
       } else {
         setUsersPic(defaultPic);
-      }  
+      }
+    }
+    getPictures()
+    // return () => {
+
+    // }
+
   });
   const defaultPic =
     "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/04/01/17/twitter-egg.jpg";
@@ -69,7 +75,7 @@ export function PutPic(props) {
         </Form>
       </Card.Body>
       <div id="currentPic">
-        <h2 style={{width: "400px"}}>{resultMessage}</h2>
+        <h2 style={{ width: "400px" }}>{resultMessage}</h2>
       </div>
     </Card>
   );
