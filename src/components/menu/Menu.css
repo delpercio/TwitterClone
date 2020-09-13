@@ -1,20 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
 #menu {
   background-color: lightskyblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1em;
-  border-radius: 1em;
+  padding:  1rem;
+
 }
 
-#menu-links {
-  display: flex;
-  padding-left: 1em;
+
+#menu-links :hover{
+  color: brown;
+  transform: scale(1.1);
+  text-decoration: none;
+
 }
 
 #menu-links a {
-  padding-right: 0.5em;
+  padding-right: 2em;
   color: darkblue;
-  text-decoration: underline;
+  text-align: center;
   cursor: pointer;
+}
+
+.kwitterLogo{
+  font-family: 'Courgette', cursive;
+  font-size: 3rem;
+  
 }

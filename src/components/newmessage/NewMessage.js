@@ -22,8 +22,8 @@ export function NewMessage() {
     setMessage("");
   };
   return (
-    <Card className="newMessage">
-      <Card.Title>Make a new Kweet!</Card.Title>
+    <Card style={{backgroundColor: '#c7feff',border:"0px",paddingTop:'5px' }} className="newMessage">
+      <Card.Title style={{textAlign:'center' }}>Make a new Kweet!</Card.Title>
       <Form onSubmit={handleSubmit}>
         <Form.Control
           type="text"

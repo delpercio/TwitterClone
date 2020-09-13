@@ -27,6 +27,7 @@ const UserSearch = () => {
     <div className="main">
       <div className="searchbar">
         <Form
+          className="inputBox"
           style={{ textAlign: "center" }}
           onSubmit={(e) => {
             e.preventDefault();
@@ -34,8 +35,9 @@ const UserSearch = () => {
           }}
         >
           <input
+            size="50"
             type="text"
-            placeholder="Enter Username"
+            placeholder="Enter Username, Case Sensitive"
             value={message}
             onChange={handleChange}
           />
@@ -44,9 +46,9 @@ const UserSearch = () => {
       </div>
 
       {/* displaying the search results */}
-      
+
       {shouldRender && userSearchResult ? (
-        <Card style={{ width: "18rem", display: "inline-flex" }}>
+        <Card bg="info" style={{ width: "18rem", display: "inline-flex" }}>
           <br />
           <Card.Img
             src={

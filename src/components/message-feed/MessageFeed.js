@@ -2,17 +2,12 @@ import React, { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/messages";
 import { LoaderComponent } from "../loader";
-import styled from "styled-components";
 import { MenuContainer } from "../../components";
 import "./MessageFeed.css";
 import { likeMessageAction } from "../../redux/actions/likes";
 import { unlikeMessageAction } from "../../redux/actions/likes";
-
-
-const TitleHeader = styled.h2`
-  display: flex;
-  justify-content: center;
-`;
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 export const MessageFeed = () => {
   const currentUsername = useSelector((state) => state.auth.username);
@@ -25,12 +20,10 @@ export const MessageFeed = () => {
   const dispatch = useDispatch();
 
   const fetchMessages = useCallback(() => {
-      dispatch(actions.getMessages());
-    },
-    [dispatch],
-  )
+    dispatch(actions.getMessages());
+  }, [dispatch]);
   useEffect(() => {
-    fetchMessages()
+    fetchMessages();
   }, [fetchMessages]);
 
   const handleLikeClick = (event, messageId) => {
@@ -46,34 +39,49 @@ export const MessageFeed = () => {
   };
 
   return (
-    <div className="feed">
-      <div className="menu-container">
+    <>
+      
         <MenuContainer />
-      </div>
-      <div className="centered">
-        {loading && <LoaderComponent />}
-        </div>
-      <div className="messages">{ messages && <div>
-          <TitleHeader>Messages</TitleHeader>
-          {messages.map((message, indexNum) => (
-            <div key={messages[indexNum].id} className="messages-info">
-              <span key={message.id}>{message.text}</span>
-              <span>UserId: {message.username}</span>
-              <span>Likes: {message.likes.length}</span>
-              <span>Posted: {message.createdAt.toString()}</span>
-              <button
-                onClick={(e) => handleLikeClick(e, messages[indexNum].id)}
-              >
-                Like
-              </button>
-              <button
-                onClick={(e) => handleUnlikeClick(e, messages[indexNum].likes)}
-              >
-                Unlike
-              </button>
+    
+      <div className="feed">
+        <div className="centered">{loading && <LoaderComponent />}</div>
+
+        <div className="messages">
+          <h1>Message Feed</h1>
+          {messages && (
+            <div>
+              {messages.map((message, indexNum) => (
+                <Card
+                  style={{ textAlign: "center" }}
+                  key={messages[indexNum].id}
+                  className="messages-info"
+                >
+                  <Card.Title key={message.id}>{message.text}</Card.Title>
+                  <Card.Body>
+                    <Card.Text>User: {message.username}</Card.Text>
+                    <Card.Text>Likes: {message.likes.length}</Card.Text>
+                    <Card.Text>Posted: {message.createdAt}</Card.Text>
+                  </Card.Body>
+                  <Button
+                    className="likes"
+                    onClick={(e) => handleLikeClick(e, messages[indexNum].id)}
+                  >
+                    Like
+                  </Button>
+                  <Button
+                    className="likes"
+                    onClick={(e) =>
+                      handleUnlikeClick(e, messages[indexNum].likes)
+                    }
+                  >
+                    Unlike
+                  </Button>
+                </Card>
+              ))}
             </div>
-          ))}
-        </div>}</div>
-    </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
