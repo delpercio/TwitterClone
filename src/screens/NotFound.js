@@ -2,13 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 import {MenuContainer} from '../components/menu'
+import './NotFound.css'
 
 const NotFound = ({ location }) => (
   <>
   <MenuContainer/>
-    <h2>404 Page</h2>
-    <p>Page not found for {location.pathname}</p>
+  <div className="notFound">
+    <p>404..</p>
+    <p>:(</p>
+    <p>{location.pathname} does not exist....</p>
     <Link to="/">Go Home</Link>
+  </div>
+    
     
   </>
   
