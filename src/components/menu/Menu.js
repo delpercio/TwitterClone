@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../../redux/actions/auth";
-import Nav from "react-bootstrap/Nav";
 import "./Menu.css";
 import { Navbar } from "react-bootstrap";
 
